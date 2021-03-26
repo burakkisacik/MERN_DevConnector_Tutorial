@@ -5,10 +5,13 @@ const connectDB = require('./config/db');
 //load env file in order to use environment variables
 dotenv.config({ path: './config/config.env' });
 
+const app = express();
+
 //Connect the DataBase
 connectDB();
 
-const app = express();
+//Body Parser
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => {
   res.send('initial setup');
